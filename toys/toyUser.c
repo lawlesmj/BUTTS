@@ -14,5 +14,8 @@
 #include "toybox.h" 
 
 int main(){
+    pid_t my_pid, pid;
+    
+    my_pid = getpid();
     
 }
