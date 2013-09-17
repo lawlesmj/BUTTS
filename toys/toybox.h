@@ -2,11 +2,9 @@
 #define TOYBOX_H
 
 typedef struct {
-  char name[30];
-} toy;
-
-typedef struct {
-  toy toys[5];
+  char toy1[30];
+  char toy2[30];
+  char toy3[30];
 } toybox;
 
 // shared memory key
