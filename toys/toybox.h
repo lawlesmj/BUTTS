@@ -1,7 +1,7 @@
 // some includes
 
 #ifndef TOYBOX_H
-#def TOYBOX_H
+#define TOYBOX_H
 
 //constants:
 //  shared memory key
