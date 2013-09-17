@@ -5,6 +5,7 @@
 
 //constants:
 //  shared memory key
+#define TOYBOX_KEY 0x666
 
 //structure:
 //  toy structure
