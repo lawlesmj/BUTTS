@@ -56,7 +56,7 @@ int main(){
     printf("\nThe parent creates a toy %s. The parent puts the toy in the box.", box->toy1);
     box->toy2 = "Bat";
     printf("\nThe parent creates a toy %s. The parent puts the toy in the box.", box->toy2);
-    box->toy3 = "Plastic bag"
+    box->toy3 = "Plastic bag";
     printf("\nThe parent creates a toy %s. The parent puts the toy in the box.", box->toy3);
     
     //detach from memory
@@ -83,7 +83,7 @@ int main(){
         shmdt( box );
         
         //exit
-        exit(0)
+        exit(0);
     }
     else{
         printf("\nThe parent waits for its new child to play with the toys.");
@@ -91,7 +91,7 @@ int main(){
         wait(NULL);
         printf("\nThe child has been terminated, so the parent destroys the toybox.");
         shmctl( shmid , IPC_RMID , NULL );
-        printf("\nThen the parent terminate itself.\nThe End.")
+        printf("\nThen the parent terminate itself.\nThe End.");
         
         exit(0);
     }
