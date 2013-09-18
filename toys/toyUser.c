@@ -92,13 +92,14 @@ int main(){
         
         //detach memory
         shmdt( box );
+        printf("\nI close the box and teminate myself.\n");
         
         //exit
         exit(0);
     }
     else{
         printf("\nThe parent waits for its new child to play with the toys.");
-        printf("\n Its name is %d", pid);
+        printf("\nIts name is %d", pid);
         wait(NULL);
         printf("\nThe child has been terminated, so the parent destroys the toybox.");
         shmctl( shmid , IPC_RMID , NULL );
