@@ -13,4 +13,6 @@ typedef struct {
   } note;
 } msgbuf;
 
+#define NOTE_SIZE sizeof(msgbuf) - sizeof(long)
+
 #endif
