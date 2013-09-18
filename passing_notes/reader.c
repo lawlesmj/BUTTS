@@ -22,7 +22,7 @@ int main() {
   }
   
   printf("**Ready to receive notes.\n");
-  buf.note.mtype = 1;
+  buf.mtype = 1;
   while(1){
     if(msgrcv(msgqid, &buf, sizeof(buf.note.text), 0, 0) == -1) {
       perror("msgrcv");
