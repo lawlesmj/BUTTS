@@ -16,15 +16,15 @@ int main() {
   
   key = MSGQUE_KEY;
   
-  if((msqid = msgget(key, 0644)) == -1) {
+  if((msgqid = msgget(key, 0644)) == -1) {
     perror("msgget");
     exit(1);
   }
   
   printf("**Ready to receive notes.\n");
-  buf.mtype = 1;
+  buf.note.type = 1;
   while(1){
-    if(msgrcv(msqid, &buf, sizeof(buf.mtext), 0, 0) == -1) {
+    if(msgrcv(msgqid, &buf, sizeof(buf.note.text), 0, 0) == -1) {
       perror("msgrcv");
       exit(1);
     }
