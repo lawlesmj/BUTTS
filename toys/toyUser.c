@@ -19,7 +19,7 @@ int main(){
     int shmid;
     key_t shmkey;
     int shmflag;
-    toy thetoy;
+    toybox box;
     
     my_pid = getpid();
     shmkey = TOYBOX_KEY;
@@ -47,7 +47,12 @@ int main(){
         exit(-1);
     }
     
-    thetoy->name = "Bear";
-    p->toys[0] 
-    printf("\nThe parent creates a toy %s. The parent puts the toy in the box.", thetoy->name);
+    box->toy1 = "Bear";
+    printf("\nThe parent creates a toy %s. The parent puts the toy in the box.", box->toy1);
+    box->toy2 = "Bat";
+    printf("\nThe parent creates a toy %s. The parent puts the toy in the box.", box->toy2);
+    box->toy3 = "Plastic bag"
+    printf("\nThe parent creates a toy %s. The parent puts the toy in the box.", box->toy3);
+    
+   
 }
