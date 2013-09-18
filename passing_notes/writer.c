@@ -22,7 +22,9 @@ int main() {
   }
   
   printf("Enter lines of text, ^D to quit:\n");
-  buf.mtype = 1; 
+  buf.mtype = 1;
+  buf.note.sender = getpid();
+  
   while(fgets(buf.note.text, sizeof buf.note.text, stdin) != NULL) {
     int len = strlen(buf.note.text);
     
