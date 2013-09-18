@@ -25,7 +25,7 @@ int main() {
   buf.mtype = 1;
   buf.note.sender = getpid();
   
-  while(fgets(buf.note.text, sizeof buf.note.text, stdin) != NULL) {
+  while(fgets(buf.note.text, NOTE_SIZE, stdin) != NULL) {
     int len = strlen(buf.note.text);
     
     if (buf.note.text[len-1] == '\n') buf.note.text[len-1] = '\0';
