@@ -40,7 +40,7 @@ int main(){
              , my_pid , shmid) ;
     }
     else {
-        printf("\nThe Parent with id %d failed to buy a toybox. \"Errno %d\", the parent swears."
+        printf("\nThe Parent with id %d failed to buy a toybox. \"Errno %d\", the parent swears.\n"
              , my_pid , errno ) ;
         exit(-1) ;    
     }
@@ -50,17 +50,17 @@ int main(){
     if ( box == (toybox *) -1) {
         fprintf(stderr, "\nThe parent could not open the toybox.");
         fprintf(stderr,"\"Errno %d\", the parent swears.", errno);
-        fprintf(stderr, "\nThe parent gives up and terminates himself.\nThe end.");
+        fprintf(stderr, "\nThe parent gives up and terminates himself.\nThe end.\n");
         shmctl( shmid , IPC_RMID , NULL );
         exit(-1);
     }
     
     //fill memory
-    strcpy("Bear", box->toy1);
+    strcpy(box->toy1,"Bear");
     printf("\nThe parent creates a toy %s. The parent puts the toy in the box.", box->toy1);
-    strcpy("Bat", box->toy2);
+    strcpy(box->toy2,"Ball");
     printf("\nThe parent creates a toy %s. The parent puts the toy in the box.", box->toy2);
-    strcpy("Plastic Bag", box->toy3);
+    strcpy(box->toy3,"Plastic bag");
     printf("\nThe parent creates a toy %s. The parent puts the toy in the box.", box->toy3);
     
     //detach from memory
@@ -80,15 +80,15 @@ int main(){
         if ( box == (toybox *) -1) {
             fprintf(stderr, "\nI could not open the toybox.");
             fprintf(stderr,"\"Errno %d\", I swears.", errno);
-            fprintf(stderr, "\nI gives up and terminates myself.\nThe end.");
+            fprintf(stderr, "\nI gives up and terminates myself.\nThe end.\n");
             shmctl( shmid , IPC_RMID , NULL );
             exit(-1);
         }
         
         //read memory
-        printf("\n\tI delightedly play with my toy %s!\nIt exploded...", box->toy1);
-        printf("\n\tI delightedly play with my toy %s!\nIt exploded...", box->toy2);
-        printf("\n\tI delightedly play with my toy %s!\nIt exploded...", box->toy3);
+        printf("\n\tI delightedly play with my toy %s!\n\tIt exploded...", box->toy1);
+        printf("\n\tI delightedly play with my toy %s!\n\tIt exploded...", box->toy2);
+        printf("\n\tI delightedly play with my toy %s!\n\tIt exploded...", box->toy3);
         
         //detach memory
         shmdt( box );
@@ -102,7 +102,7 @@ int main(){
         wait(NULL);
         printf("\nThe child has been terminated, so the parent destroys the toybox.");
         shmctl( shmid , IPC_RMID , NULL );
-        printf("\nThen the parent terminate itself.\nThe End.");
+        printf("\nThen the parent terminate itself.\nThe End.\n");
         
         exit(0);
     }
