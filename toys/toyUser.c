@@ -46,8 +46,8 @@ int main(){
     //attach to memory
     box = (toybox *) shmat( shmid, NULL, 0);
     if ( box == (toybox *) -1) {
-        fprintf(stderr, "\nThe parent could not open the toybox."
-            + "\nThe parent gives up and terminates himself.\nThe end.");
+        fprintf(stderr, "\nThe parent could not open the toybox.");
+        fprintf(stderr, "\nThe parent gives up and terminates himself.\nThe end.");
         exit(-1);
     }
     
@@ -61,7 +61,7 @@ int main(){
     
     //detach from memory
     shmdt( box );
-    printf("\n The parent has closed the toybox and will produce a child to use the toys.");
+    printf("\nThe parent has closed the toybox and will produce a child to use the toys.");
     
     pid = fork();
     
@@ -86,8 +86,8 @@ int main(){
         exit(0)
     }
     else{
-        printf("\nThe parent waits for its new child to play with the toys."
-            + "\n Its name is %d", pid);
+        printf("\nThe parent waits for its new child to play with the toys.");
+        printf("\n Its name is %d", pid);
         wait(NULL);
         printf("\nThe child has been terminated, so the parent destroys the toybox.");
         shmctl( shmid , IPC_RMID , NULL );
