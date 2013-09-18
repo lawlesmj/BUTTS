@@ -47,6 +47,7 @@ int main(){
         exit(-1);
     }
     
+    //fill memory
     box->toy1 = "Bear";
     printf("\nThe parent creates a toy %s. The parent puts the toy in the box.", box->toy1);
     box->toy2 = "Bat";
@@ -54,6 +55,7 @@ int main(){
     box->toy3 = "Plastic bag"
     printf("\nThe parent creates a toy %s. The parent puts the toy in the box.", box->toy3);
     
+    //detach from memory
     shmdt( box );
     printf("\n The parent has closed the toybox and will produce a child to use the toys.");
     
@@ -65,13 +67,23 @@ int main(){
     }
     else if (pid == 0){
         printf("\nWhy hello! I'm the child %d boy do I sure want to paly with some toys!", getpid());
+        //attach to memory
         box = (toybox *) shmat( shmid, NULL, 0);
+        
+        //read memory
+        
+        //detach memory
+        
+        //exit
     }
     else{
-        printf("\nIts the parent again... I'm just going to wait for the kid to terminate after playing.");
-        printf("\n Its name is %d", pid);
+        printf("\nThe parent waits for its new child to play with the toys."
+            + "\n Its name is %d", pid);
         wait(NULL);
-        printf("\n My child has completed so I am useless good bye world now terminating");
+        printf("\nThe child has completed so the parent destroys the toybox.");
+        shmctl( shmid , IPC_RMID , NULL );
+        printf("\nThen the parent terminate itself.")
+        
         exit(0);
     }
 }
