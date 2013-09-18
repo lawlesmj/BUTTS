@@ -19,7 +19,7 @@ int main(){
     int shmid;
     key_t shmkey;
     int shmflag;
-    toybox box;
+    toybox * box;
     
     my_pid = getpid();
     shmkey = TOYBOX_KEY;
@@ -41,8 +41,8 @@ int main(){
     }
     
     //attach to memory
-    p = (toybox *) shmat( shmid, NULL, 0);
-    if ( p == (toybox *) -1) {
+    box = (toybox *) shmat( shmid, NULL, 0);
+    if ( box == (toybox *) -1) {
         fprintf(stderr, "\nThe parent could not open the toybox. The parent gives up and terminates himself. The end.");
         exit(-1);
     }
@@ -54,7 +54,7 @@ int main(){
     box->toy3 = "Plastic bag"
     printf("\nThe parent creates a toy %s. The parent puts the toy in the box.", box->toy3);
     
-    shmdt( p );
+    shmdt( box );
     printf("\n The parent has closed the toybox and will produce a child to use the toys.");
     
     pid = fork();
@@ -65,7 +65,7 @@ int main(){
     }
     else if (pid == 0){
         printf("\nWhy hello! I'm the child %d boy do I sure want to paly with some toys!", getpid());
-        //bleh!
+        box = (toybox *) shmat( shmid, NULL, 0);
     }
     else{
         printf("\nIts the parent again... I'm just going to wait for the kid to terminate after playing.");
