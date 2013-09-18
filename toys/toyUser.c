@@ -66,23 +66,28 @@ int main(){
         exit(-1);
     }
     else if (pid == 0){
-        printf("\nWhy hello! I'm the child %d boy do I sure want to paly with some toys!", getpid());
+        printf("\n\tWhy hello! I'm the child %d boy do I sure want to paly with some toys!", getpid());
         //attach to memory
         box = (toybox *) shmat( shmid, NULL, 0);
         
         //read memory
+        printf("\n\tI delightedly play with my toy %s!\nIt exploded...", box->toy1);
+        printf("\n\tI delightedly play with my toy %s!\nIt exploded...", box->toy2);
+        printf("\n\tI delightedly play with my toy %s!\nIt exploded...", box->toy3);
         
         //detach memory
+        shmdt( box );
         
         //exit
+        exit(0)
     }
     else{
         printf("\nThe parent waits for its new child to play with the toys."
             + "\n Its name is %d", pid);
         wait(NULL);
-        printf("\nThe child has completed so the parent destroys the toybox.");
+        printf("\nThe child has been terminated, so the parent destroys the toybox.");
         shmctl( shmid , IPC_RMID , NULL );
-        printf("\nThen the parent terminate itself.")
+        printf("\nThen the parent terminate itself.\nThe End.")
         
         exit(0);
     }
