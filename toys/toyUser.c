@@ -43,7 +43,8 @@ int main(){
     //attach to memory
     box = (toybox *) shmat( shmid, NULL, 0);
     if ( box == (toybox *) -1) {
-        fprintf(stderr, "\nThe parent could not open the toybox. The parent gives up and terminates himself. The end.");
+        fprintf(stderr, "\nThe parent could not open the toybox."
+            + "\nThe parent gives up and terminates himself.\nThe end.");
         exit(-1);
     }
     
