@@ -32,7 +32,7 @@ int main() {
   }
   
   // destroy the box
-  if (msgctl(msqid, IPC_RMID, NULL) == -1) {
+  if (msgctl(msgqid, IPC_RMID, NULL) == -1) {
     perror("msgctl");
     exit(1);
   }
