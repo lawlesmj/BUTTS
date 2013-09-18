@@ -67,5 +67,7 @@ int main(){
         printf("Why hello! I'm the child %d boy do I sure want to paly with some toys!", getpid());
         //bleh!
     }
-   
+    else{
+        printf("Its the parent again... I'm just going to wait for the kid to terminate after playing.");
+    }
 }
