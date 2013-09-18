@@ -19,19 +19,21 @@
 
 int main(){
     pid_t my_pid, pid;
-    int shmid;
+    
+    int shmid ;
     key_t shmkey;
-    int shmflag;
-    toybox * box;
+    int shmflg ;
+    toybox *box;
     
     my_pid = getpid();
+    
     shmkey = TOYBOX_KEY;
-    shmflag = IPC_CREAT | IPC_EXCL | S_IRUSR | S_IWUSR ;
+    shmflg = IPC_CREAT | IPC_EXCL | S_IRUSR | S_IWUSR ;
     
     printf("\nOnce upon a time...");
     
     //create memory
-    shmid = shmget( shmkey, BOX_SIZE, shmflag);
+    shmid = shmget( shmkey , BOX_SIZE , shmflg ) ;
     
     if ( shmid != -1 ) {
         printf("\nThe Parent with id %d bought a toybox labeled \"%d\""
