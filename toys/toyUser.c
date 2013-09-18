@@ -54,5 +54,15 @@ int main(){
     box->toy3 = "Plastic bag"
     printf("\nThe parent creates a toy %s. The parent puts the toy in the box.", box->toy3);
     
+    shmdt( p );
+    printf("\n The parent has detached from memory and will produce a child to use the toys.");
+    
+    pid = fork();
+    
+    if(pid<0){
+        fprintf(stderr, "The parent was unable to produce a child, terminating parent.");
+        exit(-1);
+    }
+    
    
 }
