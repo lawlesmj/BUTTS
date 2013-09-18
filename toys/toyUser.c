@@ -63,6 +63,9 @@ int main(){
         fprintf(stderr, "The parent was unable to produce a child, terminating parent.");
         exit(-1);
     }
-    
+    else if (pid == 0){
+        printf("Why hello! I'm the child %d boy do I sure want to paly with some toys!", getpid());
+        //bleh!
+    }
    
 }
