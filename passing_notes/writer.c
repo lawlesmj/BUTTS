@@ -16,7 +16,7 @@ int main() {
   
   key = MSGQUE_KEY;
   
-  if((msqid = msgget(key, 0644 | IPC_CREAT)) == -1) {
+  if((msgqid = msgget(key, 0644 | IPC_CREAT)) == -1) {
     perror("msgget");
     exit(1);
   }
