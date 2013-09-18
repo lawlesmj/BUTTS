@@ -52,11 +52,11 @@ int main(){
     }
     
     //fill memory
-    box->toy1 = "Bear";
+    strcpy("Bear", box->toy1);
     printf("\nThe parent creates a toy %s. The parent puts the toy in the box.", box->toy1);
-    box->toy2 = "Bat";
+    strcpy("Bat", box->toy2);
     printf("\nThe parent creates a toy %s. The parent puts the toy in the box.", box->toy2);
-    box->toy3 = "Plastic bag";
+    strcpy("Plastic Bag", box->toy3);
     printf("\nThe parent creates a toy %s. The parent puts the toy in the box.", box->toy3);
     
     //detach from memory
