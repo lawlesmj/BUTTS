@@ -24,7 +24,7 @@ int main() {
   printf("**Ready to receive notes.\n");
   buf.mtype = 1;
   while(1){
-    if(msgrcv(msgqid, &buf, sizeof(buf.note.text), 0, 0) == -1) {
+    if(msgrcv(msgqid, &buf, NOTE_SIZE, 0, 0) == -1) {
       perror("msgrcv");
       exit(1);
     }
