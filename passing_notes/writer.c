@@ -27,7 +27,7 @@ int main() {
     int len = strlen(buf.note.text);
     
     if (buf.note.text[len-1] == '\n') buf.note.text[len-1] = '\0';
-    if (msgsnd(msqid, &buf, len+1, 0) == -1) 
+    if (msgsnd(msgqid, &buf, len+1, 0) == -1) 
     perror("msgsnd");
   }
   
