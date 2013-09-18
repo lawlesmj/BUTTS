@@ -27,7 +27,7 @@ int main(){
     
     my_pid = getpid();
     
-    shmkey = TOYBOX_KEY;
+    shmkey = TOYBOX_KEY ;
     shmflg = IPC_CREAT | IPC_EXCL | S_IRUSR | S_IWUSR ;
     
     printf("\nOnce upon a time...");
@@ -49,7 +49,9 @@ int main(){
     box = (toybox *) shmat( shmid, NULL, 0);
     if ( box == (toybox *) -1) {
         fprintf(stderr, "\nThe parent could not open the toybox.");
+        fprintf(stderr,"\"Errno %d\", the parent swears.", errno);
         fprintf(stderr, "\nThe parent gives up and terminates himself.\nThe end.");
+        shmctl( shmid , IPC_RMID , NULL );
         exit(-1);
     }
     
@@ -75,6 +77,13 @@ int main(){
         printf("\n\tWhy hello! I'm the child %d boy do I sure want to paly with some toys!", getpid());
         //attach to memory
         box = (toybox *) shmat( shmid, NULL, 0);
+        if ( box == (toybox *) -1) {
+            fprintf(stderr, "\nI could not open the toybox.");
+            fprintf(stderr,"\"Errno %d\", I swears.", errno);
+            fprintf(stderr, "\nI gives up and terminates myself.\nThe end.");
+            shmctl( shmid , IPC_RMID , NULL );
+            exit(-1);
+        }
         
         //read memory
         printf("\n\tI delightedly play with my toy %s!\nIt exploded...", box->toy1);
