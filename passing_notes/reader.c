@@ -28,7 +28,7 @@ int main() {
       perror("msgrcv");
       exit(1);
     }
-    printf("** \"%s\"\n** --from %d", buf.note.text, buf.note.sender);
+    printf("** \"%s\"\n** --from %d\n", buf.note.text, buf.note.sender);
   }
   
   return 0;
