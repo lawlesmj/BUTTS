@@ -1,3 +1,8 @@
+/**************************************************************************
+* Authors: Douglas Applegate and Mike Lawless
+* Assignment Title: IPC demo
+* **************************************************************************/
+
 #include <sys/types.h>
 
 #ifndef PASSING_NOTES_H
