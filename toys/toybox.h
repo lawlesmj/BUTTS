@@ -1,3 +1,8 @@
+/**************************************************************************
+* Authors: Douglas Applegate and Mike Lawless
+* Assignment Title: IPC demo
+* **************************************************************************/
+
 typedef struct {
   char toy1[30];
   char toy2[30];
