@@ -1,3 +1,8 @@
+/**************************************************************************
+* Authors: Douglas Applegate and Mike Lawless
+* Assignment Title: IPC demo
+* **************************************************************************/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>
