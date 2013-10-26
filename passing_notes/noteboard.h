@@ -12,12 +12,10 @@
 
 typedef struct {
   long mtype;
-  struct {
-    pid_t sender;
-    char text[128];
-  } note;
-} msgbuf;
+  pid_t sender;
+  char text[1];
+} note_t;
 
-#define NOTE_SIZE sizeof(msgbuf) - sizeof(long)
+#define NOTE_SIZE(N) (sizeof(note_t) - sizeof(long) + sizeof(char) * (N-1))
 
 #endif

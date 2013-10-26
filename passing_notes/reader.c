@@ -15,9 +15,19 @@
 #include "noteboard.h"
 
 int main() {
-  msgbuf buf;
+  note_t * note;
   int msgqid;
+  int max_string_length;
   key_t key;
+  
+  max_string_length = 144;
+  
+  note = (note_t *) malloc(sizeof(note_t) + sizeof(char) * (max_string_length - 1));
+  if(note == NULL) {
+    printf("Error allocating note of size %d.", max_string_length);
+    exit(1);
+  }
+  
   
   key = MSGQUE_KEY;
   
@@ -27,13 +37,12 @@ int main() {
   }
   
   printf("**Ready to receive notes.\n");
-  buf.mtype = 1;
   while(1){
-    if(msgrcv(msgqid, &buf, NOTE_SIZE, 0, 0) == -1) {
+    if(msgrcv(msgqid, note, NOTE_SIZE(max_string_length), 0, 0) == -1) {
       perror("msgrcv");
       exit(1);
     }
-    printf("** \"%s\"\n** --from %d\n", buf.note.text, buf.note.sender);
+    printf("** \"%s\"\n** --from %d\n", note->text, note->sender);
   }
   
   return 0;
